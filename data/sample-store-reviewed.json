@@ -1,0 +1,20 @@
+{
+  "event_id": "evt-store-review-20260922-001",
+  "event_type": "STORE_REVIEWED",
+  "aggregate_type": "store_decision",
+  "aggregate_id": "store-117:2026-09",
+  "occurred_at": "2026-09-22T09:00:00+08:00",
+  "record_kind": "decision",
+  "version": 1,
+  "scenario": {
+    "rent_monthly": 180000,
+    "waste_rate": 0.12,
+    "service_radius_km": 3,
+    "energy_monthly": 45000,
+    "labor_monthly": 210000,
+    "capacity_mode": "front_shop_back_factory"
+  },
+  "reason_codes": ["rent_pressure", "sweet_soft_category_slowdown"],
+  "based_on": ["evt-forecast-20260922-001"],
+  "summary": "复算门店117保留现烤与改造中央配送点的租金、损耗与服务半径取舍"
+}

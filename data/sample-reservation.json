@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-reservation-20260922-001",
+  "event_type": "INVENTORY_RESERVED",
+  "aggregate_type": "reservation",
+  "aggregate_id": "rsv-order-8842-smb",
+  "occurred_at": "2026-09-22T18:42:00+08:00",
+  "record_kind": "decision",
+  "version": 1,
+  "reservation_key": "order-8842:sku-sweet-milk-bread",
+  "promised_at": "2026-09-22T19:15:00+08:00",
+  "quantity": 2,
+  "reason_codes": ["online_order_half_hour_promise"],
+  "based_on": ["evt-allocation-20260922-117"],
+  "summary": "线上订单占用甜软吐司2件，承诺30分钟送达；平台重试须使用同一reservation_key"
+}

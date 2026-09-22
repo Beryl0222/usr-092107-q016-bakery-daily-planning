@@ -1,0 +1,12 @@
+{
+  "event_id": "evt-pack-block-20260922-001",
+  "event_type": "PACKAGING_BLOCKED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "batch-pack-20260915-smb-v4",
+  "occurred_at": "2026-09-22T00:05:00+08:00",
+  "record_kind": "decision",
+  "version": 1,
+  "reason_codes": ["health_label_changed"],
+  "based_on": ["evt-label-20260921-001"],
+  "summary": "健康标签第5版生效，旧版包装批次封存停售"
+}

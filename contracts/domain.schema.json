@@ -8,6 +8,7 @@
     "aggregate_type",
     "aggregate_id",
     "occurred_at",
+    "record_kind",
     "version",
     "summary"
   ],
@@ -20,19 +21,35 @@
       "type": "string",
       "enum": [
         "DEMAND_FORECASTED",
+        "SALES_RECORDED",
         "PLAN_RELEASED",
+        "PLAN_ADJUSTED",
+        "COST_RECORDED",
+        "BATCH_RECEIVED",
+        "BATCH_PRODUCED",
         "BATCH_ALLOCATED",
+        "TRANSFER_ORDERED",
         "MARKDOWN_APPLIED",
-        "STORE_REVIEWED"
+        "WASTE_RECORDED",
+        "PACKAGING_BLOCKED",
+        "LABEL_REVISION_PUBLISHED",
+        "INVENTORY_RESERVED",
+        "RESERVATION_RELEASED",
+        "STORE_REVIEWED",
+        "PROMO_EXPERIMENT_LAUNCHED",
+        "EXPERIMENT_EVALUATED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
-        "recipe_version",
+        "demand_series",
         "production_plan",
         "inventory_batch",
-        "store_decision"
+        "recipe_version",
+        "reservation",
+        "store_decision",
+        "promo_experiment"
       ]
     },
     "aggregate_id": {
@@ -43,6 +60,14 @@
       "type": "string",
       "format": "date-time"
     },
+    "record_kind": {
+      "type": "string",
+      "enum": [
+        "forecast",
+        "decision",
+        "actual"
+      ]
+    },
     "version": {
       "type": "integer",
       "minimum": 1
@@ -50,7 +75,273 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "knowledge_cutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "based_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "supersedes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reservation_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "remaining_shelf_life_hours": {
+      "type": "number",
+      "minimum": 0
+    },
+    "adjustment_scope": {
+      "const": "unreleased"
+    },
+    "effective_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "promised_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenario": {
+      "type": "object",
+      "required": [
+        "rent_monthly",
+        "waste_rate",
+        "service_radius_km"
+      ],
+      "properties": {
+        "rent_monthly": {
+          "type": "number"
+        },
+        "waste_rate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "service_radius_km": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
     }
   },
+  "propertyNames": {
+    "not": {
+      "enum": [
+        "customer_id",
+        "customer_name",
+        "customer_phone",
+        "member_id",
+        "user_id",
+        "phone",
+        "mobile",
+        "id_card",
+        "id_number",
+        "openid",
+        "open_id",
+        "unionid",
+        "union_id",
+        "device_id",
+        "ip_address",
+        "address",
+        "gps",
+        "location"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "record_kind": { "const": "forecast" } },
+        "required": ["record_kind"]
+      },
+      "then": { "required": ["knowledge_cutoff"] }
+    },
+    {
+      "if": {
+        "properties": { "record_kind": { "const": "decision" } },
+        "required": ["record_kind"]
+      },
+      "then": { "required": ["reason_codes", "based_on"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "enum": ["INVENTORY_RESERVED", "RESERVATION_RELEASED"] } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["reservation_key"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "enum": ["TRANSFER_ORDERED", "MARKDOWN_APPLIED"] } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["remaining_shelf_life_hours"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PLAN_ADJUSTED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["adjustment_scope"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "LABEL_REVISION_PUBLISHED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["effective_from"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "STORE_REVIEWED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["scenario"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "DEMAND_FORECASTED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "demand_series" }, "record_kind": { "const": "forecast" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "SALES_RECORDED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "demand_series" }, "record_kind": { "const": "actual" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PLAN_RELEASED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "production_plan" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PLAN_ADJUSTED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "production_plan" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "COST_RECORDED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "production_plan" }, "record_kind": { "const": "actual" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "BATCH_RECEIVED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "actual" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "BATCH_PRODUCED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "actual" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "BATCH_ALLOCATED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "TRANSFER_ORDERED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "MARKDOWN_APPLIED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "WASTE_RECORDED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "actual" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PACKAGING_BLOCKED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "inventory_batch" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "LABEL_REVISION_PUBLISHED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "recipe_version" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "INVENTORY_RESERVED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "reservation" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "RESERVATION_RELEASED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "reservation" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "STORE_REVIEWED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "store_decision" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PROMO_EXPERIMENT_LAUNCHED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "promo_experiment" }, "record_kind": { "const": "decision" } } }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "EXPERIMENT_EVALUATED" } },
+        "required": ["event_type"]
+      },
+      "then": { "properties": { "aggregate_type": { "const": "promo_experiment" }, "record_kind": { "const": "actual" } } }
+    }
+  ],
   "additionalProperties": true
 }

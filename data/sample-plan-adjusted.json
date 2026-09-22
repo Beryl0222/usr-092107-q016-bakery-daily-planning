@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-plan-adj-20260922-001",
+  "event_type": "PLAN_ADJUSTED",
+  "aggregate_type": "production_plan",
+  "aggregate_id": "plan-store-117-20260922",
+  "occurred_at": "2026-09-22T05:10:00+08:00",
+  "record_kind": "decision",
+  "version": 2,
+  "adjustment_scope": "unreleased",
+  "adjusted_quantity": -24,
+  "reason_codes": ["sweet_soft_category_slowdown", "fresh_waste_reduction"],
+  "based_on": ["evt-forecast-20260922-001"],
+  "summary": "按早间预测下调甜软吐司未投产数量24件，已投产批次不变"
+}

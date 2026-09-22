@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-markdown-20260922-001",
+  "event_type": "MARKDOWN_APPLIED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "batch-20260922-smb-02",
+  "occurred_at": "2026-09-22T19:00:00+08:00",
+  "record_kind": "decision",
+  "version": 1,
+  "remaining_shelf_life_hours": 4,
+  "discount_rate": 0.3,
+  "reason_codes": ["shelf_life_short", "clearance_rule_evening"],
+  "based_on": ["evt-forecast-20260922-001"],
+  "summary": "甜软吐司批次剩余货架期4小时，按夜间清仓规则折价30%"
+}

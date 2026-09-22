@@ -1,0 +1,12 @@
+{
+  "event_id": "evt-waste-20260922-001",
+  "event_type": "WASTE_RECORDED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "batch-20260922-smb-01",
+  "occurred_at": "2026-09-22T22:10:00+08:00",
+  "record_kind": "actual",
+  "version": 1,
+  "waste_reason": "fresh_made_unsold",
+  "quantity": 11,
+  "summary": "甜软吐司现制未售报损11件"
+}

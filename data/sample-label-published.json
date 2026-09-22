@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-label-20260921-001",
+  "event_type": "LABEL_REVISION_PUBLISHED",
+  "aggregate_type": "recipe_version",
+  "aggregate_id": "recipe-sweet-milk-bread:v5",
+  "occurred_at": "2026-09-21T10:00:00+08:00",
+  "record_kind": "decision",
+  "version": 5,
+  "effective_from": "2026-09-22T00:00:00+08:00",
+  "reason_codes": ["nutrition_label_regulation_update"],
+  "based_on": ["evt-label-20260501-001"],
+  "summary": "甜软吐司营养标签第5版（低糖标识调整），9月22日零时起旧包装停售"
+}
