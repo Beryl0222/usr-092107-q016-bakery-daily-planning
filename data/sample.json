@@ -1,9 +1,0 @@
-{
-  "event_id": "sample-016-001",
-  "event_type": "DEMAND_FORECASTED",
-  "aggregate_type": "recipe_version",
-  "aggregate_id": "bakery_daily_planning-001",
-  "occurred_at": "2026-09-20T18:00:00+08:00",
-  "version": 1,
-  "summary": "登记烘焙门店日配决策台的首条领域记录"
-}

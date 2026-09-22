@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-20260922-0019",
+  "event_type": "TRANSFER_COMPLETED",
+  "aggregate_type": "transfer_order",
+  "aggregate_id": "to-20260922-015",
+  "occurred_at": "2026-09-22T16:20:00+08:00",
+  "version": 1,
+  "record_kind": "actual",
+  "summary": "调拨单 to-20260922-015 完成：沪009 → 沪002，45 个软欧全部签收",
+  "from_store": "沪009",
+  "to_store": "沪002",
+  "qty_received": 45,
+  "completed_at": "2026-09-22T16:20:00+08:00"
+}

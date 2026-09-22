@@ -9,6 +9,7 @@
     "aggregate_id",
     "occurred_at",
     "version",
+    "record_kind",
     "summary"
   ],
   "properties": {
@@ -21,8 +22,24 @@
       "enum": [
         "DEMAND_FORECASTED",
         "PLAN_RELEASED",
+        "PLAN_REVISED",
+        "CAPACITY_UPDATED",
         "BATCH_ALLOCATED",
+        "BATCH_PRODUCED",
+        "TRANSFER_DECIDED",
+        "TRANSFER_COMPLETED",
         "MARKDOWN_APPLIED",
+        "CLEARANCE_RULE_PUBLISHED",
+        "RESERVATION_CONFIRMED",
+        "ORDER_FULFILLED",
+        "LABEL_SUPERSEDED",
+        "PACKAGING_BLOCKED",
+        "PROMOTION_LAUNCHED",
+        "EXPERIMENT_MEASURED",
+        "INGREDIENT_RECEIVED",
+        "SALE_RECORDED",
+        "WASTE_RECORDED",
+        "STORE_DAY_CLOSED",
         "STORE_REVIEWED"
       ]
     },
@@ -30,8 +47,17 @@
       "type": "string",
       "enum": [
         "recipe_version",
+        "demand_forecast",
         "production_plan",
+        "capacity_slot",
+        "ingredient_lot",
         "inventory_batch",
+        "transfer_order",
+        "customer_order",
+        "packaging_batch",
+        "clearance_rule",
+        "promotion_experiment",
+        "store_day",
         "store_decision"
       ]
     },
@@ -47,10 +73,95 @@
       "type": "integer",
       "minimum": 1
     },
+    "record_kind": {
+      "type": "string",
+      "enum": [
+        "forecast",
+        "decision",
+        "actual"
+      ]
+    },
     "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_cutoff_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revision_scope": {
+      "type": "string",
+      "enum": [
+        "unstarted_only"
+      ]
+    },
+    "remaining_shelf_life_hours": {
+      "type": "number",
+      "minimum": 0
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "superseded_label_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blocked_label_version": {
       "type": "string",
       "minLength": 1
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "event_type": { "const": "DEMAND_FORECASTED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["data_cutoff_at"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PLAN_REVISED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["revision_scope"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "TRANSFER_DECIDED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["remaining_shelf_life_hours"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "MARKDOWN_APPLIED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["remaining_shelf_life_hours"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "RESERVATION_CONFIRMED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["idempotency_key"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "LABEL_SUPERSEDED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["superseded_label_version"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PACKAGING_BLOCKED" } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["blocked_label_version"] }
+    }
+  ],
   "additionalProperties": true
 }

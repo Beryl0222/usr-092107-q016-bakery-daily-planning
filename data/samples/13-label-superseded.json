@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-20260922-0013",
+  "event_type": "LABEL_SUPERSEDED",
+  "aggregate_type": "recipe_version",
+  "aggregate_id": "rv-全麦核桃包-007",
+  "occurred_at": "2026-09-22T11:00:00+08:00",
+  "version": 7,
+  "record_kind": "decision",
+  "summary": "全麦核桃包启用新版低糖营养标签 LBL-2026-09，旧标签 LBL-2025-11 停用",
+  "new_label_version": "LBL-2026-09",
+  "superseded_label_version": "LBL-2025-11",
+  "nutrition": { "energy_kcal_100g": 246, "sugar_g_100g": 3.2, "claim": "低糖" }
+}

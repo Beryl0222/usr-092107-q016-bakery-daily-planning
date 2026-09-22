@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-20260923-0007",
+  "event_type": "BATCH_ALLOCATED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "b-0923-全麦吐司-01",
+  "occurred_at": "2026-09-23T05:30:00+08:00",
+  "version": 1,
+  "record_kind": "decision",
+  "summary": "批次 b-0923-全麦吐司-01 分配：沪003店 120 个，沪007店 80 个，线上仓 60 个",
+  "allocations": [
+    { "dest": "沪003", "qty": 120 },
+    { "dest": "沪007", "qty": 80 },
+    { "dest": "线上仓", "qty": 60 }
+  ]
+}

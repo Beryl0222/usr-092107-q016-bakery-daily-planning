@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-20260922-0005",
+  "event_type": "INGREDIENT_RECEIVED",
+  "aggregate_type": "ingredient_lot",
+  "aggregate_id": "lot-0922-稀奶油-03",
+  "occurred_at": "2026-09-22T06:20:00+08:00",
+  "version": 1,
+  "record_kind": "actual",
+  "summary": "原料入库：稀奶油批次 lot-0922-稀奶油-03，保质期至 2026-09-25",
+  "ingredient": "稀奶油",
+  "qty_kg": 40,
+  "expires_at": "2026-09-25T23:59:59+08:00",
+  "supplier_id": "SUP-乳品-11"
+}

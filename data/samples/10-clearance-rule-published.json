@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-20260922-0010",
+  "event_type": "CLEARANCE_RULE_PUBLISHED",
+  "aggregate_type": "clearance_rule",
+  "aggregate_id": "cr-夜间折扣-v3",
+  "occurred_at": "2026-09-22T10:00:00+08:00",
+  "version": 3,
+  "record_kind": "decision",
+  "summary": "发布清仓规则 v3：剩余货架期不超过 6 小时的短保品，20:00 后五折清仓",
+  "trigger": { "max_remaining_shelf_life_hours": 6, "after": "20:00" },
+  "discount": 0.5,
+  "effective_from": "2026-09-23"
+}

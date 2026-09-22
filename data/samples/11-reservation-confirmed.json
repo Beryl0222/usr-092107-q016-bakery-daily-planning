@@ -1,0 +1,16 @@
+{
+  "event_id": "evt-20260922-0011",
+  "event_type": "RESERVATION_CONFIRMED",
+  "aggregate_type": "customer_order",
+  "aggregate_id": "co-20260922-8841",
+  "occurred_at": "2026-09-22T12:05:00+08:00",
+  "version": 1,
+  "record_kind": "decision",
+  "summary": "线上订单占库：承诺 30 分钟送达，凭幂等键防止平台重试重复占库",
+  "idempotency_key": "pltA-order-20260922-8841",
+  "promise_minutes": 30,
+  "store_id": "沪003",
+  "items": [
+    { "sku": "全麦核桃包", "qty": 2 }
+  ]
+}

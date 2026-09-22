@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-20260922-0021",
+  "event_type": "STORE_REVIEWED",
+  "aggregate_type": "store_decision",
+  "aggregate_id": "sdec-沪018-2026Q3",
+  "occurred_at": "2026-09-22T17:00:00+08:00",
+  "version": 1,
+  "record_kind": "decision",
+  "summary": "沪018店季度评估：高租金加现制损耗，结论为改造为中央配送点并保留现烤能力",
+  "store_id": "沪018",
+  "review_cycle": "2026Q3",
+  "options_weighed": ["闭店", "改造为中央配送点", "保留现烤"],
+  "decision": "改造为中央配送点并保留现烤",
+  "inputs": { "rent_annual": 1480000, "waste_rate": 0.117, "service_radius_km": 3.2 }
+}

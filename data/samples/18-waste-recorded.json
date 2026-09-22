@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-20260922-0018",
+  "event_type": "WASTE_RECORDED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "b-0922-甜软-02",
+  "occurred_at": "2026-09-22T22:30:00+08:00",
+  "version": 1,
+  "record_kind": "actual",
+  "summary": "甜软品类批次到期报损 22 个，原因：滞销",
+  "qty": 22,
+  "reason": "滞销",
+  "disposed_at": "2026-09-22T22:30:00+08:00"
+}

@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-20260922-0009",
+  "event_type": "MARKDOWN_APPLIED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "b-0922-甜软-02",
+  "occurred_at": "2026-09-22T20:00:00+08:00",
+  "version": 1,
+  "record_kind": "decision",
+  "summary": "甜软品类批次剩余货架期 4 小时，按清仓规则 cr-夜间折扣-v3 转入夜间五折",
+  "remaining_shelf_life_hours": 4,
+  "store_id": "沪003",
+  "qty": 38,
+  "discount": 0.5,
+  "rule_id": "cr-夜间折扣-v3"
+}

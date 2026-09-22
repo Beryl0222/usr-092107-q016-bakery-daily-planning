@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-20260922-0014",
+  "event_type": "PACKAGING_BLOCKED",
+  "aggregate_type": "packaging_batch",
+  "aggregate_id": "pk-全麦核桃包-旧膜-052",
+  "occurred_at": "2026-09-22T11:05:00+08:00",
+  "version": 1,
+  "record_kind": "decision",
+  "summary": "旧包装膜仍印制已停用的 LBL-2025-11 标签，阻止继续销售并隔离待销毁",
+  "blocked_label_version": "LBL-2025-11",
+  "qty_blocked": 1200,
+  "disposition": "隔离待销毁"
+}

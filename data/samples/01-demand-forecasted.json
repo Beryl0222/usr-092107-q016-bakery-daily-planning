@@ -1,0 +1,19 @@
+{
+  "event_id": "evt-20260922-0001",
+  "event_type": "DEMAND_FORECASTED",
+  "aggregate_type": "demand_forecast",
+  "aggregate_id": "fc-沪003-20260923",
+  "occurred_at": "2026-09-22T07:00:00+08:00",
+  "version": 3,
+  "record_kind": "forecast",
+  "summary": "沪003店 2026-09-23 小时级需求预测（第三版）：傍晚甜软品类下调，低糖品类上调",
+  "store_id": "沪003",
+  "forecast_date": "2026-09-23",
+  "data_cutoff_at": "2026-09-22T06:00:00+08:00",
+  "horizon_hours": 24,
+  "hourly_items": [
+    { "hour": "07:00", "sku": "全麦核桃包", "qty": 46 },
+    { "hour": "18:00", "sku": "奶油甜软包", "qty": 12 }
+  ],
+  "drivers": ["低糖需求上升", "商超半小时配送分流", "夜间折扣带动"]
+}

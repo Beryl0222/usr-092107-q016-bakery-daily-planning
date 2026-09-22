@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-20260922-0012",
+  "event_type": "ORDER_FULFILLED",
+  "aggregate_type": "customer_order",
+  "aggregate_id": "co-20260922-8841",
+  "occurred_at": "2026-09-22T12:33:00+08:00",
+  "version": 1,
+  "record_kind": "actual",
+  "summary": "订单履约完成：28 分钟送达，达成 30 分钟承诺时效",
+  "delivered_minutes": 28,
+  "promise_minutes": 30,
+  "promise_met": true
+}

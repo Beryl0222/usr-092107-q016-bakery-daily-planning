@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-20260922-0008",
+  "event_type": "TRANSFER_DECIDED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "b-0922-软欧-03",
+  "occurred_at": "2026-09-22T14:00:00+08:00",
+  "version": 1,
+  "record_kind": "decision",
+  "summary": "软欧批次剩余货架期 10 小时，决定由沪009调往高周转的沪002店",
+  "remaining_shelf_life_hours": 10,
+  "from_store": "沪009",
+  "to_store": "沪002",
+  "qty": 45,
+  "rule": "剩余货架期≥8小时优先调拨"
+}

@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-20260922-0004",
+  "event_type": "PLAN_REVISED",
+  "aggregate_type": "production_plan",
+  "aggregate_id": "pp-20260923-01",
+  "occurred_at": "2026-09-22T09:10:00+08:00",
+  "version": 2,
+  "record_kind": "decision",
+  "summary": "预测下调后修订日配计划：仅减少尚未投产的傍晚甜软品类数量",
+  "based_on_forecast": "fc-沪003-20260923",
+  "revision_scope": "unstarted_only",
+  "adjustments": [
+    { "sku": "奶油甜软包", "from_qty": 180, "to_qty": 120, "status": "not_started" }
+  ]
+}

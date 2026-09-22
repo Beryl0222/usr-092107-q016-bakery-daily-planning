@@ -1,0 +1,16 @@
+{
+  "event_id": "evt-20260923-0006",
+  "event_type": "BATCH_PRODUCED",
+  "aggregate_type": "inventory_batch",
+  "aggregate_id": "b-0923-全麦吐司-01",
+  "occurred_at": "2026-09-23T05:00:00+08:00",
+  "version": 1,
+  "record_kind": "actual",
+  "summary": "中央工厂A 产出全麦吐司批次 b-0923-全麦吐司-01，记录能耗与人工",
+  "sku": "全麦吐司",
+  "qty": 260,
+  "produced_at": "2026-09-23T04:40:00+08:00",
+  "shelf_life_hours": 36,
+  "energy_kwh": 58.4,
+  "labor_hours": 6.5
+}
